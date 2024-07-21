@@ -14,14 +14,16 @@ function HomePage() {
       {/* {breadcrumbs} */}
       <Breadcrumbs />
       
-      <div>
+      <div className='flex flex-row w-[1450px] m-auto'>
         {/* {filteroptions} */}
         < FilterOptions />
 
         {/* { allproducts } */}
        < AllProducts />
+
+       </div>
       </div>
-    </div>
+
   )
 }
 
