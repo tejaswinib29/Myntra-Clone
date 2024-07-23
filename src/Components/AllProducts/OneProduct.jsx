@@ -1,11 +1,24 @@
 import React from 'react'
 import { IoIosStar } from "react-icons/io";
+import { useDispatch } from 'react-redux';
+import { addItemToBag } from '../../Store/Slices/bagSlice';
 
 
 function OneProduct(props) {
     const {productImage, productRating, productBrand, productPrice, productName, productDiscount } = props
 
     let productCustomers = parseInt((Math.random()* 10) + 1)
+
+    const dispatch = useDispatch()
+    const handleAddProductToCart = (e) => {
+        e.preventDefault();
+
+        let OneProduct = {
+            productImage, productRating, productBrand, productPrice, productName, productDiscount
+        }
+
+        dispatch(addItemToBag(OneProduct))
+    }
 
   return (
     <div className='w-52 h-fit m-2 group hover:shadow-2xl hover:cursor-pointer'>
@@ -19,7 +32,9 @@ function OneProduct(props) {
 
                             {/* add to cart button */}
                             <div className='absolute hidden group-hover:flex p-3 bg-white z-50 bottom-0 w-full'>
-                                <button className='bg-white w-full p-2 text-sm font-bold border-2 border-slate-300 rounded-sm'>Add to Cart</button>
+                                <button
+                                onClick={handleAddProductToCart}
+                                className='bg-white w-full p-2 text-sm font-bold border-2 border-slate-300 rounded-sm'>Add to Cart</button>
                             </div>
 
                             {/* ratings */}
